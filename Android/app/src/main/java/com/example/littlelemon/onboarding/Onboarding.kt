@@ -1,20 +1,18 @@
 package com.example.littlelemon.onboarding
 
-import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
 import com.example.littlelemon.framework.composable.CommonLayout
-import com.example.littlelemon.framework.composable.Header
 
 @Composable
-fun Onboarding() {
+fun Onboarding(navController: NavHostController) {
     CommonLayout {
-        OnBoardingView()
+        OnBoardingView(navController)
     }
 }
 
-@Preview
-@Composable
-fun OnboardingPreview() {
-    Onboarding()
-}
+//@Preview
+//@Composable
+//fun OnboardingPreview() {
+//    Onboarding(navController)
+//}

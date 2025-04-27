@@ -4,36 +4,34 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import com.example.littlelemon.onboarding.OnBoardingView
+import androidx.navigation.compose.rememberNavController
+import com.example.common.preferences.SharedPreferenceManager
 import com.example.littlelemon.onboarding.Onboarding
-import com.example.littlelemon.ui.theme.App_Background
-import com.example.littlelemon.ui.theme.LittleLemonTheme
 import com.example.littlelemon.ui.theme.MediterraneanRestaurantTheme
+import com.example.navigations.Navigation
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        SharedPreferenceManager.init(this)
+
         enableEdgeToEdge()
         setContent {
+            val navController = rememberNavController()
+
             MediterraneanRestaurantTheme {
-//                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-//                    Greeting(
-//                        name = "Android",
-//                        modifier = Modifier.padding(innerPadding)
-//                    )
-//                }
                 Box(
                     modifier = Modifier
                         .safeDrawingPadding()
                 ) {
-                    Onboarding()
+
+                    Navigation(navController)
+//                    Onboarding()
                 }
             }
         }
@@ -48,10 +46,10 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     )
 }
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    MediterraneanRestaurantTheme {
-        Onboarding()
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun GreetingPreview() {
+//    MediterraneanRestaurantTheme {
+//        Onboarding(navController)
+//    }
+//}
