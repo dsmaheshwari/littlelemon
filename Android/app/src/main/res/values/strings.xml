@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">LittleLemon</string>
+    <string name="title_activity_onboarding">Onboarding</string>
+    <string name="lets_get_to_Know_you">Let\'s Get To Know You!</string>
+    <string name="personal_information">Provide your personal information for seamless Reservations!</string>
+    <string name="First_Name">First Name</string>
+    <string name="Last_Name">Last Name</string>
+    <string name="Email">Email</string>
+    <string name="Phone">WhatsApp Number</string>
+    <string name="gender">Gender</string>
+    <string name="age">Age</string>
+    <string name="register">Register</string>
 </resources>
