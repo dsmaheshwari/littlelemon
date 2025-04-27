@@ -20,6 +20,8 @@ private val AppTextInputColors: TextFieldColors
         focusedTextColor = MaterialTheme.colorScheme.onSurface,
         focusedContainerColor = MaterialTheme.colorScheme.surface,
         unfocusedContainerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.5F),
+        disabledContainerColor = SoftWhite.copy(0.5F),
+        disabledTextColor = Input_Field_Text.copy(0.5F),
         cursorColor = MaterialTheme.colorScheme.onSurface,
         focusedLabelColor = MaterialTheme.colorScheme.primary,
         unfocusedLabelColor = MaterialTheme.colorScheme.onBackground,
@@ -59,6 +61,8 @@ fun InputBox(
     minLines: Int = 1,
     interactionSource: MutableInteractionSource? = null,
     shape: Shape = OutlinedTextFieldDefaults.shape,
+    readOnly: Boolean = false,
+    enabled: Boolean = true
 ) {
     Column {
         Label(
@@ -79,8 +83,8 @@ fun InputBox(
             },
             colors = AppTextInputColors,
             modifier = Modifier.fillMaxWidth(),
-            enabled = true,
-            readOnly = false,
+            enabled = enabled,
+            readOnly = readOnly,
             leadingIcon = leadingIcon,
             trailingIcon = trailingIcon,
             prefix = prefix,

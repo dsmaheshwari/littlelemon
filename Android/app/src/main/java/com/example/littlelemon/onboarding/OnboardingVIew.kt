@@ -133,6 +133,7 @@ private fun OnBoardingViewForm(navController: NavHostController) {
                             SharedPreferenceManager.set("lastName", lastName)
                             SharedPreferenceManager.set("email", email)
                             SharedPreferenceManager.set("phone", phone)
+                            SharedPreferenceManager.set("gender", if(gender.isNullOrBlank()) {""} else { gender})
                             SharedPreferenceManager.set("isRegistered", true)
                             isSuccess = true
                         }
