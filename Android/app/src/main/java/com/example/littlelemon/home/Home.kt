@@ -1,16 +1,20 @@
 package com.example.littlelemon.home
 
-import androidx.compose.material3.Text
+import android.os.Bundle
+import androidx.activity.ComponentActivity
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.NavHostController
+import androidx.lifecycle.lifecycleScope
+import com.example.littlelemon.framework.composable.CommonLayout
 import com.example.navigations.NavigationManager
 
 @Composable
 fun Home(navigationManager: NavigationManager) {
-    Text(
-        "This is Home"
-    )
+    CommonLayout(
+        navigationManager = navigationManager,
+        lazyLoadingRequired = false
+    ) {
+        HomeView(navigationManager)
+    }
 }
 
 //@Preview
