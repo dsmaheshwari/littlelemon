@@ -6,7 +6,7 @@ import com.example.navigations.NavigationManager
 
 @Composable
 fun Profile(navigationManager: NavigationManager) {
-    CommonLayout {
+    CommonLayout(navigationManager) {
         ProfileView(navigationManager)
     }
 }

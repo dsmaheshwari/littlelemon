@@ -11,9 +11,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.littlelemon.R
 import com.example.littlelemon.ui.theme.CoralRed
+import com.example.navigations.NavigationManager
 
 @Composable
-fun Header() {
+fun Header(navigationManager: NavigationManager) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -27,5 +28,5 @@ fun Header() {
 @Preview
 @Composable
 fun HeaderPreview() {
-    Header()
+//    Header(navigationManager)
 }
