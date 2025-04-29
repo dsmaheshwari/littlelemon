@@ -30,7 +30,7 @@ fun CommonLayout(
 
             if(preContent != null) {
                 preContent()
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(12.dp))
             }
 
             if(lazyLoadingRequired == true) {
