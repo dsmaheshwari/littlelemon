@@ -34,72 +34,6 @@ suspend fun fetchMenuList(): MenuItemList {
     return menuItems
 }
 
-@OptIn(ExperimentalGlideComposeApi::class)
-@Composable
-private fun HeroSection1() {
-    val screenHeight = LocalConfiguration.current.screenHeightDp.dp
-
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .heightIn(max = screenHeight * 0.3f)
-            .padding(16.dp),
-        shape = RoundedCornerShape(16.dp),
-        elevation = CardDefaults.cardElevation(6.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = Color(0xFFFFF3E0) // soft warm tone; adjust as needed
-        )
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(24.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Column(
-                modifier = Modifier
-                    .weight(0.66f)
-                    .padding(end = 16.dp)
-            ) {
-                Text(
-                    text = "Little Lemon",
-                    style = MaterialTheme.typography.displayLarge,
-                    color = Header_Primary_Text
-                )
-                Spacer(modifier = Modifier.height(8.dp))
-                Text(
-                    text = "Chicago",
-                    style = MaterialTheme.typography.headlineMedium,
-                    color = Header_Secondary_Text
-                )
-                Spacer(modifier = Modifier.height(12.dp))
-                Text(
-                    text = "We are a family-owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.",
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = Label_Text
-                )
-            }
-
-            Column(
-                modifier = Modifier
-                    .weight(0.33f)
-                    .fillMaxHeight()
-                    .padding(start = 12.dp)
-            ) {
-                GlideImage(
-                    model = "https://via.placeholder.com/160", // Replace with actual image URL
-                    contentDescription = "Little Lemon Restaurant Image",
-                    modifier = Modifier
-                        .size(160.dp)
-                        .clip(RoundedCornerShape(12.dp)),
-                    contentScale = ContentScale.Crop
-                )
-            }
-        }
-    }
-}
-
 @Composable
 private fun MenuFilterItem(
     categories: List<String>,
@@ -251,7 +185,6 @@ fun HomeView(navigationManager: NavigationManager) {
     }
 
     Column {
-//        HeroSection()
         MenuFilterItem(
             categories = categories,
             selectedCategories = selectedCategories,
