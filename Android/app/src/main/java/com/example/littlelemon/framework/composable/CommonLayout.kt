@@ -9,10 +9,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.littlelemon.ui.theme.App_Background
 import com.example.navigations.NavigationManager
+import kotlinx.serialization.json.JsonNull.content
 
 @Composable
 fun CommonLayout(
     navigationManager: NavigationManager,
+    lazyLoadingRequired: Boolean? = true,
     content: @Composable () -> Unit
 ) {
     val scrollState = rememberScrollState()
@@ -24,12 +26,23 @@ fun CommonLayout(
     ) {
         Column {
             Header(navigationManager)
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxHeight()
-                    .padding(horizontal = 12.dp)
-            ) {
-                item {
+
+            if(lazyLoadingRequired == true) {
+                LazyColumn(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .padding(horizontal = 12.dp)
+                ) {
+                    item {
+                        content()
+                    }
+                }
+            } else {
+                Column(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .padding(horizontal = 12.dp)
+                ) {
                     content()
                 }
             }
