@@ -3,11 +3,12 @@ package com.example.littlelemon.onboarding
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import com.example.littlelemon.framework.composable.CommonLayout
+import com.example.navigations.NavigationManager
 
 @Composable
-fun Onboarding(navController: NavHostController) {
+fun Onboarding(navigationManager: NavigationManager) {
     CommonLayout {
-        OnBoardingView(navController)
+        OnBoardingView(navigationManager)
     }
 }
 

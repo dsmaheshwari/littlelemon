@@ -16,6 +16,9 @@ fun Navigation(
     val isUserRegistered = SharedPreferenceManager.getValue("isRegistered", Boolean::class.java, false)
 
     println("Value ios ::::::::::::::::::::::::::::::::::::::::::::::::::::: $isUserRegistered")
+    var navigationManager = NavigationManager()
+
+    navigationManager.setNavController(navController)
 
     NavHost(
         navController = navController,
@@ -26,15 +29,15 @@ fun Navigation(
         }
     ) {
         composable(HomeScreen.route) {
-            Home(navController)
+            Home(navigationManager)
         }
 
         composable(ProfileScreen.route) {
-            Profile(navController)
+            Profile(navigationManager)
         }
 
         composable(OnboardingScreen.route) {
-            Onboarding(navController)
+            Onboarding(navigationManager)
         }
     }
 }

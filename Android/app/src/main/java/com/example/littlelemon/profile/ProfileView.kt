@@ -17,20 +17,21 @@ import com.example.littlelemon.R
 import com.example.littlelemon.framework.composable.FormLayout
 import com.example.littlelemon.ui.theme.Button_Tertiary_Background
 import com.example.littlelemon.ui.theme.Button_Tertiary_Text_Color
+import com.example.navigations.NavigationManager
 
 @Composable
-fun ProfileView(navController: NavController) {
+fun ProfileView(navigationManager: NavigationManager) {
 
 
     FormLayout(
         heading = stringResource(R.string.personalInformation)
     ) {
-        ProfileViewForm()
+        ProfileViewForm(navigationManager)
     }
 }
 
 @Composable
-private fun ProfileViewForm() {
+private fun ProfileViewForm(navigationManager: NavigationManager) {
     Column(
         modifier = Modifier.fillMaxHeight(),
         verticalArrangement = Arrangement.Center
@@ -97,7 +98,8 @@ private fun ProfileViewForm() {
             Row {
                 Button(
                     onClick = {
-
+                        SharedPreferenceManager.clear()
+                        navigationManager.navigateTo("Onboarding")
                     },
                     colors = ButtonColors(
                         containerColor = Button_Tertiary_Background,

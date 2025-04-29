@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
@@ -14,6 +15,7 @@ import com.example.common.preferences.SharedPreferenceManager
 import com.example.littlelemon.onboarding.Onboarding
 import com.example.littlelemon.ui.theme.MediterraneanRestaurantTheme
 import com.example.navigations.Navigation
+import com.example.navigations.NavigationManager
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

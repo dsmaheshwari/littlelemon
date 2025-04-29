@@ -18,13 +18,14 @@ import com.example.littlelemon.R
 import com.example.littlelemon.framework.composable.FormLayout
 import com.example.littlelemon.ui.theme.*
 import com.example.navigations.HomeScreen
+import com.example.navigations.NavigationManager
 import kotlinx.coroutines.delay
 
 private lateinit var header:String
 private lateinit var subHeader:String
 
 @Composable
-fun OnBoardingView(navController: NavHostController) {
+fun OnBoardingView(navigationManager: NavigationManager) {
     header = stringResource(R.string.lets_get_to_Know_you)
     subHeader = stringResource(R.string.personal_information)
 
@@ -32,12 +33,12 @@ fun OnBoardingView(navController: NavHostController) {
         heading = header,
         subHeading = subHeader
     ) {
-        OnBoardingViewForm(navController)
+        OnBoardingViewForm(navigationManager)
     }
 }
 
 @Composable
-private fun OnBoardingViewForm(navController: NavHostController) {
+private fun OnBoardingViewForm(navigationManager: NavigationManager) {
     Column(
         modifier = Modifier.fillMaxHeight(),
         verticalArrangement = Arrangement.Center
@@ -164,7 +165,7 @@ private fun OnBoardingViewForm(navController: NavHostController) {
                     color = Success
                 )
             } else {
-                navController.navigate(HomeScreen.route)
+                navigationManager.navigateTo(HomeScreen.route)
             }
         }
     }
