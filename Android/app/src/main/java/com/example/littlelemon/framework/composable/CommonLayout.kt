@@ -15,6 +15,7 @@ import kotlinx.serialization.json.JsonNull.content
 fun CommonLayout(
     navigationManager: NavigationManager,
     lazyLoadingRequired: Boolean? = true,
+    preContent: (@Composable () -> Unit)? = null,
     content: @Composable () -> Unit
 ) {
     val scrollState = rememberScrollState()
@@ -26,6 +27,11 @@ fun CommonLayout(
     ) {
         Column {
             Header(navigationManager)
+
+            if(preContent != null) {
+                preContent()
+                Spacer(modifier = Modifier.height(8.dp))
+            }
 
             if(lazyLoadingRequired == true) {
                 LazyColumn(
