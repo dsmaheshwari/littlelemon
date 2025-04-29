@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -18,6 +20,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
+import com.example.common.composables.InputBox
 import com.example.database.MenuItem
 import com.example.database.MenuItemDatabase
 import com.example.littlelemon.ui.theme.*
@@ -160,10 +163,11 @@ fun HomeView(navigationManager: NavigationManager) {
     var selectedCategories by remember { mutableStateOf(setOf<String>()) }
 
     val categories = menuItems.map { it.category }.distinct()
-    val filteredItems = if (selectedCategories.isEmpty()) {
-        menuItems
-    } else {
-        menuItems.filter { it.category in selectedCategories }
+    var searchPhrase by remember { mutableStateOf("") }
+    val filteredItems = menuItems.filter { item ->
+        val matchesCategory = selectedCategories.isEmpty() || item.category in selectedCategories
+        val matchesSearch = searchPhrase.isNullOrBlank() || item.title.contains(searchPhrase, ignoreCase = true)
+        matchesCategory && matchesSearch
     }
 
     LaunchedEffect(Unit) {
@@ -185,10 +189,26 @@ fun HomeView(navigationManager: NavigationManager) {
     }
 
     Column {
+        Text(
+            text = "Order For Delivery!",
+            style = MaterialTheme.typography.displayLarge,
+        )
         MenuFilterItem(
             categories = categories,
             selectedCategories = selectedCategories,
             onSelectionChanged = { selectedCategories = it
+            }
+        )
+
+        InputBox(
+            label = "",
+            value = searchPhrase,
+            onValueChange = {
+                searchPhrase = it
+            },
+            placeholder="Enter Search Phrase",
+            leadingIcon = {
+                Icon(imageVector = Icons.Default.Search, contentDescription = "Search")
             }
         )
 
