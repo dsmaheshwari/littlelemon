@@ -65,10 +65,13 @@ fun InputBox(
     enabled: Boolean = true
 ) {
     Column {
-        Label(
-            label = label
-        )
-        Spacer(modifier = Modifier.height(8.dp))
+        if(!label.isNullOrBlank()) {
+            Label(
+                label = label
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+        }
+
         OutlinedTextField(
             value = value,
             onValueChange = onValueChange,
